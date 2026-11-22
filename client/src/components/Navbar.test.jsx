@@ -8,9 +8,9 @@ vi.mock('../services/authService', () => ({
   logoutUser: vi.fn(),
 }))
 
-function renderNavbar(user) {
+function renderNavbar(user, profile = null) {
   render(
-    <AuthContext.Provider value={{ user }}>
+    <AuthContext.Provider value={{ user, profile }}>
       <MemoryRouter>
         <Navbar />
       </MemoryRouter>
@@ -33,5 +33,12 @@ describe('Navbar', () => {
 
     expect(screen.getByRole('button', { name: 'Log out' })).toBeInTheDocument()
     expect(screen.queryByRole('link', { name: 'Log in' })).not.toBeInTheDocument()
+  })
+
+  it('shows landlord links for a landlord', () => {
+    renderNavbar({ uid: '123' }, { role: 'landlord' })
+
+    expect(screen.getByRole('link', { name: 'Properties' })).toHaveAttribute('href', '/landlord/properties')
+    expect(screen.getByRole('link', { name: 'Rent' })).toHaveAttribute('href', '/landlord/rent')
   })
 })

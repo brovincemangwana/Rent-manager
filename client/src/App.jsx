@@ -9,7 +9,9 @@ import LandlordDashboard from './pages/landlord/LandlordDashboard'
 import Properties from './pages/landlord/Properties'
 import Units from './pages/landlord/Units'
 import RentLedger from './pages/landlord/RentLedger'
+import MaintenanceBoard from './pages/landlord/MaintenanceBoard'
 import TenantDashboard from './pages/tenant/TenantDashboard'
+import Maintenance from './pages/tenant/Maintenance'
 
 export default function App() {
   return (
@@ -29,10 +31,12 @@ export default function App() {
           <Route path="/landlord/properties" element={<Properties />} />
           <Route path="/landlord/units" element={<Units />} />
           <Route path="/landlord/rent" element={<RentLedger />} />
+          <Route path="/landlord/maintenance" element={<MaintenanceBoard />} />
         </Route>
 
         <Route element={<ProtectedRoute role="tenant" />}>
           <Route path="/tenant" element={<TenantDashboard />} />
+          <Route path="/tenant/maintenance" element={<Maintenance />} />
         </Route>
       </Routes>
     </>

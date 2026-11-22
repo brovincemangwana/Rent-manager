@@ -68,3 +68,14 @@ export async function updateUnit(id, values, property) {
 export function deleteUnit(id) {
   return deleteDoc(doc(db, 'units', id))
 }
+
+export function subscribeToTenantUnits(tenantId, onData, onError) {
+  const q = query(unitsRef, where('tenantId', '==', tenantId))
+  return onSnapshot(
+    q,
+    (snapshot) => {
+      onData(snapshot.docs.map((d) => ({ id: d.id, ...d.data() })))
+    },
+    onError
+  )
+}
