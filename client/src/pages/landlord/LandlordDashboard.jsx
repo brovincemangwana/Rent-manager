@@ -17,9 +17,15 @@ export default function LandlordDashboard() {
         </Link>
         <Link
           to="/landlord/units"
-          className="rounded-lg bg-accent-500 px-4 py-2 font-medium text-white hover:bg-accent-600"
+          className="rounded-lg bg-brand-700 px-4 py-2 font-medium text-white hover:bg-brand-800"
         >
           Units and tenants
+        </Link>
+        <Link
+          to="/landlord/rent"
+          className="rounded-lg bg-accent-500 px-4 py-2 font-bold text-white hover:bg-accent-600"
+        >
+          Rent ledger
         </Link>
       </div>
     </div>

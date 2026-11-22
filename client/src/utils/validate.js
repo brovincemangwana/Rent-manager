@@ -54,3 +54,12 @@ export function validateUnit({ propertyId, name, monthlyRent }) {
 
   return errors
 }
+
+export function validatePayment(amount, balance) {
+  const value = Number(amount)
+  if (!amount || value <= 0) return 'Enter an amount above 0'
+  if (value > balance) {
+    return `Amount cannot be more than the balance (KES ${balance.toLocaleString()})`
+  }
+  return ''
+}

@@ -8,6 +8,7 @@ import Register from './pages/Register'
 import LandlordDashboard from './pages/landlord/LandlordDashboard'
 import Properties from './pages/landlord/Properties'
 import Units from './pages/landlord/Units'
+import RentLedger from './pages/landlord/RentLedger'
 import TenantDashboard from './pages/tenant/TenantDashboard'
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/landlord" element={<LandlordDashboard />} />
           <Route path="/landlord/properties" element={<Properties />} />
           <Route path="/landlord/units" element={<Units />} />
+          <Route path="/landlord/rent" element={<RentLedger />} />
         </Route>
 
         <Route element={<ProtectedRoute role="tenant" />}>
