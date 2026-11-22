@@ -1,6 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { validateRegister } from "./validate";
-
+import { validateRegister, validateLogin } from "./validate";
 const valid = {
   name: "Amina",
   email: "amina@example.com",
@@ -9,18 +8,16 @@ const valid = {
 };
 
 describe("validateRegister", () => {
-  it("returns no errors for valid input", () => {
+  it("should return no errors for valid input", () => {
     expect(validateRegister(valid)).toEqual({});
   });
 
   it("requires a name", () => {
-    expect(validateRegister({ ...valid, name: "" })).toBeDefined();
+    expect(validateRegister({ ...valid, name: "" }).name).toBeDefined();
   });
-
   it("rejects an invalid email", () => {
     expect(validateRegister({ ...valid, email: "amina" }).email).toBeDefined();
   });
-
   it("rejects a short password", () => {
     const result = validateRegister({
       ...valid,
@@ -29,12 +26,27 @@ describe("validateRegister", () => {
     });
     expect(result.password).toBeDefined();
   });
-
   it("rejects mismatched passwords", () => {
-    const result = validateRegister({
-      ...valid,
-      confirmPassword: "other",
-    });
+    const result = validateRegister({ ...valid, confirmPassword: "other" });
     expect(result.confirmPassword).toBeDefined();
+  });
+});
+
+describe("validateLogin", () => {
+  it("returns no errors for valid input", () => {
+    expect(
+      validateLogin({ email: "amina@example.com", password: "secret123" }),
+    ).toEqual({});
+  });
+
+  it("rejects an invalid email", () => {
+    expect(
+      validateLogin({ email: "amina", password: "secret123" }).email,
+    ).toBeDefined();
+  });
+  it("requires a password", () => {
+    expect(
+      validateLogin({ email: "amina@example.com", password: "" }).password,
+    ).toBeDefined();
   });
 });
