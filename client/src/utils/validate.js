@@ -38,3 +38,19 @@ export function validateProperty({ name, address }) {
 
   return errors
 }
+
+export function validateUnit({ propertyId, name, monthlyRent }) {
+  const errors = {}
+
+  if (!propertyId) {
+    errors.propertyId = 'Select a property for this unit'
+  }
+  if (!name.trim()) {
+    errors.name = 'Enter a unit name'
+  }
+  if (!monthlyRent || Number(monthlyRent) <= 0) {
+    errors.monthlyRent = 'Enter a monthly rent above 0'
+  }
+
+  return errors
+}
