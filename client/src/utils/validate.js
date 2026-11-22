@@ -25,3 +25,16 @@ export function validateLogin({ email, password }) {
   }
   return errors;
 }
+
+export function validateProperty({ name, address }) {
+  const errors = {}
+
+  if (!name.trim()) {
+    errors.name = 'Enter a property name'
+  }
+  if (!address.trim()) {
+    errors.address = 'Enter the property address'
+  }
+
+  return errors
+}
