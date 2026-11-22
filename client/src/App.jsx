@@ -6,8 +6,9 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import LandlordDashboard from './pages/landlord/LandlordDashboard'
-import TenantDashboard from './pages/tenant/TenantDashboard'
 import Properties from './pages/landlord/Properties'
+import Units from './pages/landlord/Units'
+import TenantDashboard from './pages/tenant/TenantDashboard'
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route element={<ProtectedRoute role="landlord" />}>
           <Route path="/landlord" element={<LandlordDashboard />} />
           <Route path="/landlord/properties" element={<Properties />} />
+          <Route path="/landlord/units" element={<Units />} />
         </Route>
 
         <Route element={<ProtectedRoute role="tenant" />}>
