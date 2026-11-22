@@ -63,3 +63,19 @@ export function validatePayment(amount, balance) {
   }
   return ''
 }
+
+export function validateRequest({ unitId, title, description }) {
+  const errors = {}
+
+  if (!unitId) {
+    errors.unitId = 'Select the unit this is about'
+  }
+  if (!title.trim()) {
+    errors.title = 'Enter a short title'
+  }
+  if (!description.trim()) {
+    errors.description = 'Describe the problem'
+  }
+
+  return errors
+}
