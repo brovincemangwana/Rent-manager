@@ -26,7 +26,7 @@ export default function Login() {
     setSubmitting(true)
     try {
       await loginUser(form)
-      navigate('/')
+      navigate('/dashboard')
     } catch (err) {
       setSubmitError(getAuthErrorMessage(err.code))
       setSubmitting(false)
@@ -38,7 +38,7 @@ export default function Login() {
     setSubmitting(true)
     try {
       await loginWithGoogle()
-      navigate('/')
+      navigate('/dashboard')
     } catch (err) {
       setSubmitError(getAuthErrorMessage(err.code))
       setSubmitting(false)
