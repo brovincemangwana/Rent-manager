@@ -24,7 +24,8 @@ export default function Navbar() {
     navigate('/login')
   }
 
-  const links = profile?.role === 'landlord' ? landlordLinks : profile?.role === 'tenant' ? tenantLinks : []
+  const links =
+    profile?.role === 'landlord' ? landlordLinks : profile?.role === 'tenant' ? tenantLinks : []
 
   return (
     <nav className="bg-brand-700 text-white">
